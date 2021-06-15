@@ -10,7 +10,6 @@ private:
     vector<int> data;
     vector<int> mult;
 
-public:
     int& get_at(const vector<int>& adims)
     {
         int offset = adims.back();
