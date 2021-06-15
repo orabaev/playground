@@ -32,13 +32,13 @@ public:
         // calculate multipliers
         mult.reserve(dims.size()-1);
         int m = 1;
-        for (int i=dims.size()-1; i>=0; --i)
+        for (int i=dims.size()-1; i>0; --i)
         {
             m *= dims[i];
             mult.push_back(m);
         }
         // we do not care about last entry (after reverse)
-        reverse( begin(mult), prev(end(mult)) );
+        reverse( begin(mult), end(mult) );
     }
 
     void set(const vector<int>& adims, int v)
