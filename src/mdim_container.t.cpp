@@ -52,7 +52,7 @@ public:
 
 TEST_CASE("MDimContainer")
 {
-    vector<int> dims = {3,4,2};
+    vector<int> dims = {3,4,2,13};
     MDimContainer mvec(dims);
 
     int v = 0;
@@ -62,9 +62,12 @@ TEST_CASE("MDimContainer")
         {
             for (int k=0; k<2; ++k)
             {
-                vector<int> adims{i,j,k};
-                mvec.set(adims, v);
-                ++v;
+                for (int l=0; l<13; ++l)
+                {
+                    vector<int> adims{i,j,k,l};
+                    mvec.set(adims, v);
+                    ++v;
+                }
             }
         }
     }
@@ -76,9 +79,12 @@ TEST_CASE("MDimContainer")
         {
             for (int k=0; k<2; ++k)
             {
-                vector<int> adims{i,j,k};
-                REQUIRE( v == mvec.get(adims) );
-                ++v;
+                for (int l=0; l<13; ++l)
+                {
+                    vector<int> adims{i,j,k,l};
+                    REQUIRE( v == mvec.get(adims) );
+                    ++v;
+                }
             }
         }
     }
