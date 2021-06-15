@@ -29,16 +29,14 @@ public:
         for (auto v : dims) total_size *= v;
         data.resize(total_size);
 
-        // calculate multipliers
-        mult.reserve(dims.size()-1);
+        // pre-calculate multipliers
+        mult.resize(dims.size());
         int m = 1;
         for (int i=dims.size()-1; i>0; --i)
         {
             m *= dims[i];
-            mult.push_back(m);
+            mult[i-1] = m;
         }
-        // we do not care about last entry (after reverse)
-        reverse( begin(mult), end(mult) );
     }
 
     void set(const vector<int>& adims, int v)
